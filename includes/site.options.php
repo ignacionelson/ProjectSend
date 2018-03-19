@@ -319,6 +319,20 @@ if(!empty($options_values)) {
 	}
 
 	/**
+         * For versions 1023 and up
+	 */
+	if (isset($options_values['user_max_invalid_auth_attempts'])) {
+		define('USER_MAX_INVALID_AUTH_ATTEMPTS',$options_values['user_max_invalid_auth_attempts']);
+		define('USER_OBSERVATION_WINDOW',$options_values['user_observation_window']);
+		define('CLIENT_MAX_INVALID_AUTH_ATTEMPTS',$options_values['client_max_invalid_auth_attempts']);
+		define('CLIENT_OBSERVATION_WINDOW',$options_values['client_observation_window']);
+	}
+
+	if (isset($options_values['log_failed_auth'])) {
+		define('LOG_FAILED_AUTH',$options_values['log_failed_auth']);
+	}
+
+	/**
 	 * Set the default timezone based on the value of the Timezone select box
 	 * of the options page.
 	 */

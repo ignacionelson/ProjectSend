@@ -63,7 +63,9 @@ if (defined('TRY_INSTALL')) {
 								  `active` tinyint(1) NOT NULL DEFAULT \'1\',
 								  `account_requested` tinyint(1) NOT NULL DEFAULT \'0\',
 								  `account_denied` tinyint(1) NOT NULL DEFAULT \'0\',
-								  `max_file_size` int(20)  NOT NULL DEFAULT \'0\',
+								  `max_file_size` int(20) NOT NULL DEFAULT \'0\',
+								  `start_observation_window` int(10) NOT NULL DEFAULT \'0\',
+								  `invalid_auth_attempts` int(3) NOT NULL DEFAULT \'0\',
 								  PRIMARY KEY (`id`)
 								) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 								',
@@ -335,7 +337,12 @@ if (defined('TRY_INSTALL')) {
 								('public_listing_page_enable', '0'),
 								('public_listing_logged_only', '0'),
 								('public_listing_show_all_files', '0'),
-								('public_listing_use_download_link', '0')
+								('public_listing_use_download_link', '0'),
+								('user_max_invalid_auth_attempts', '5'),
+								('user_observation_window', '20'),
+								('client_max_invalid_auth_attempts', '5'),
+								('client_observation_window', '20'),
+								('log_failed_auth', '0')
 								",
 					'params' => array(
 										':base_uri'	=> $base_uri,
